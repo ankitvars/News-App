@@ -1,43 +1,47 @@
-/* eslint-disable react/jsx-no-target-blank */
-/* eslint-disable no-useless-constructor */
-/* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { Component } from "react";
+import React from "react";
 
-export class NewsItem extends Component {
-  constructor() {
-    super();
-    this.state = {};
-  }
+const NewsItem = ({
+  title,
+  description,
+  imageUrl,
+  newsUrl,
+  author,
+  date,
+  source,
+}) => {
+  return (
+    <div>
+      <div className="card">
+        <div className="d-flex justify-content-end position-absolute end-0">
+          <span className="badge rounded-pill bg-dark">{source}</span>
+        </div>
 
-  render() {
-    let { title, description, imageUrl, newsUrl } = this.props;
-    return (
-      <div>
-        <div className="card" style={{ width: "18rem"}}>
-          <img
-            src={
-              !imageUrl
-                ? "https://images.hindustantimes.com/tech/img/2023/04/14/1600x900/Garena_Free_Fire_Max_1632206791669_1681434841827_1681434841827.jpg"
-                : imageUrl
-            }
-            className="card-img-top"
-            alt="..."
-          />
-          <div className="card-body">
-            <h5 className="card-title">{title}...</h5>
-            <p className="card-text">{description}...</p>
-            <a
-              href={newsUrl}
-              target="_blank"
-              className="btn btn-sm btn-dark"
-            >
-              Read More
-            </a>
-          </div>
+        <img
+          src={
+            !imageUrl
+              ? "https://images.hindustantimes.com/tech/img/2023/04/14/1600x900/Garena_Free_Fire_Max_1632206791669_1681434841827_1681434841827.jpg"
+              : imageUrl
+          }
+          className="card-img-top"
+          style={{ height: "18rem" }}
+          alt="..."
+        />
+        <div className="card-body">
+          <h5 className="card-title">{title}...</h5>
+          <p className="card-text">{description}...</p>
+          <p className="card-text">
+            <small className="text-muted">
+              By {!author ? "unknown" : author} on{" "}
+              {new Date(date).toGMTString()}
+            </small>
+          </p>
+          <a href={newsUrl} target="_blank" className="btn btn-sm btn-dark" rel="noreferrer">
+            Read More
+          </a>
         </div>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default NewsItem;
