@@ -11,7 +11,7 @@ const NewsItem = ({
 }) => {
   return (
     <div>
-      <div className="card">
+      <div className="card my-4">
         <div className="d-flex justify-content-end position-absolute end-0">
           <span className="badge rounded-pill bg-dark">{source}</span>
         </div>
